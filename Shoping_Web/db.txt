@@ -1,0 +1,109 @@
+用户表user  主
+	ID  		id
+	用户名 		account
+	真实姓名		name
+	昵称 		username
+	性别		sex
+	电话		tel
+	邮箱		email
+	出生日期		birthday
+	居住地址		addr
+	账户余额		money
+	用户头像		img
+	状态		status 0 1
+	支付密码		paypwd
+	密码		pwd
+			
+
+地址表 address  从
+	ID
+	收货人		name
+	所在地区（省市区）region
+	街道地址		addr
+	联系方式		tel
+	userid 		userid（关联用户表user）
+
+管理员表	manage
+	id
+	name
+	pwd
+	
+店铺表shop
+	id
+	店名	shopname
+	pid 自关联id
+	店长 	userid
+
+
+
+
+商品表	goods 主
+	ID	id
+	名称	name
+	店铺id 	shopid
+	pid 	pid	自关联	
+	
+商品信息表 goodsmessage  从
+	ID
+	商品id	goodsID 关联goods
+	上架人	userid 关联user
+	入库时间	intime
+	颜色	color
+	尺码	size
+	价格	price
+	图片	imageid 关联images
+	库存量	invent
+	运费	freight
+	状态	status
+
+图片表	images  从
+	id
+	商品id	goodsid	（关联goods的id）
+	路径	pass 
+
+购物车表	mycar
+	id
+	商品id	goodsid 关联goods
+	用户id	userid	关联user
+	店铺id	shopid	关联shop
+	数量	num
+	订单状态	orderstatus
+	
+评价表	evaluate
+	id
+	用户id	userid 关联user
+	商品id	mycarid	关联mycar
+	等级	level
+	评价信息 evamsg
+	评价时间	evatime
+	晒图
+
+订单表order
+	id
+	商品id	goodsid 关联goods
+	用户id	userid 关联user
+	收货地址	addrid	关联address
+	购物数量	buynum
+	下单时间	buytime
+	订单状态orderstatus（未付款0，已付款1，退货2）
+	
+退货表	exit
+	id
+	userid
+	goodsid
+	uptime
+	exitstatus
+	
+收藏表	collect
+	id
+	userid
+	goodsid
+
+
+
+
+
+
+
+
+
